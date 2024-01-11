@@ -1,5 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 *.cs linguist-detectable=true
-*.js linguist-detectable=true
+*.js linguist-detectable=false
 Dockerfile linguist-detectable=true
