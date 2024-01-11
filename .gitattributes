@@ -2,5 +2,5 @@
 * text=auto
 *.cs linguist-detectable=true
 *.js linguist-detectable=false
-*.jsx linguist-detectable=true
+*.jsx linguist-detectable=false
 Dockerfile linguist-detectable=true
