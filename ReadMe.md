@@ -63,7 +63,7 @@ Can be easily launched via docker compose, but first:
     ``` 
 
 Then you are ready:
- - Run:
+ - Run inside the project root:
 
   ``` 
   docker compose up -d
