@@ -2,7 +2,7 @@
 
 ## 🚀 Features & Build
 
-A hobby project combining many different technologies together with Docker🐋. This project stores and displays real time temperature 🌡️ and humidity ☁️ data gathered from DHT22 sensor. ESP32 Then sends the data via a serial USB connection to the C# server which forwards the information to Pocketbase. Pocketbase provides backend functionality: authentication 🔐, real time data subscriptions ⏳ and of course the database. This is then fetched by the React frontend and shown to the user in real time.
+A hobby project combining many different technologies together with Docker🐋. This project stores and displays real time temperature 🌡️ and humidity ☁️ data gathered from DHT22 sensor. ESP32 then sends the data via a serial USB connection to the C# server which forwards the information to Pocketbase. Pocketbase provides backend functionality: authentication 🔐, real time data subscriptions ⏳ and of course the database. This is then fetched by the React frontend and shown to the user in real time.
 
 ![Graph](/image78.png)
 
@@ -13,7 +13,7 @@ Vite + React + Tailwind
  - Displaying data in real-time
  - Authentication
   - Sign up & Login 
- - password hashing
+ - Password hashing
 
 📦 **Backend/Database:**
 
@@ -33,7 +33,7 @@ C# server
 - Password Hashing
 - Real time data fetching
 - RLS policies
-- Easu setup via Docker compose
+- Easy setup via Docker compose
 
 ## 🛠️ Setup & Usage
 
@@ -45,7 +45,7 @@ Can be easily launched via docker compose, but first:
   - ESP32 Pin 14 -> DHT22 DAT
   - ESP32 GND -> DHT22 GND
   - ESP32 3v3 -> DHT22 VCC
-- Flash the ESP32andDHT22 arduino file:
+- Flash the ESP32andDHT22 Arduino file:
   - [Guide](https://www.instructables.com/How-to-use-DHT-22-sensor-Arduino-Tutorial/) Do not follow directly: Change the library and the code
 - Connect to your computer via USB.
 
@@ -55,7 +55,7 @@ Can be easily launched via docker compose, but first:
 
     -> It will return something like this: "usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0 -> ../../ttyUSB0"
 
-    Now change the docker-compose file accordinly:
+    Now change the docker-compose file accordingly:
 
     ```
     devices: # Change USB
@@ -86,7 +86,7 @@ Then you are ready:
 
 Not secure by default!
 
-- See RLS policies from the pocketbase UI
+- See RLS policies from the Pocketbase UI
 
   Current setup:
 
