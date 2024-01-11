@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  pocketbase:
+    image: ghcr.io/muchobien/pocketbase:latest
+    container_name: pocketbase
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./Pocketbase/pocketbase_data:/pb_data
+      - ./Pocketbase/pocketbase_pubdata:/pb_public # This is where to put the loginUI files (ReactFrontendUI/client/dist)
+    healthcheck: 
+      test: wget --no-verbose --tries=1 --spider http://localhost:8090/api/health || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  esp32_serial_api: # Get USB -> "ls -l /dev/serial/by-id" --> "usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0 -> ../../ttyUSB0"
+    build:
+      context: ./CsSerialAPI
+      dockerfile: dockerfile
+    devices: # Change USB
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    depends_on:
+      - pocketbase
+
