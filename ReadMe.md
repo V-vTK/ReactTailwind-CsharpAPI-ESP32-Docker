@@ -62,6 +62,12 @@ Can be easily launched via docker compose, but first:
         - "/dev/ttyUSB0:/dev/ttyUSB0" <-- Only the left side
     ``` 
 
+Then you are ready:
+ - Run:
+
+  ``` 
+  docker compose up -d
+  ``` 
 
 **🛣️ Routes:**
 
