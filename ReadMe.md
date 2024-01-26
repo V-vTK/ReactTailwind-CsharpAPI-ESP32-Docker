@@ -72,6 +72,7 @@ Then you are ready:
 **🛣️ Routes:**
 
 - Pocketbase Admin Panel: http://localhost:8090/_/
+  - Credentials: example@email.com -> 1234567890
 
 - React Frontend: http://localhost:8090
 
