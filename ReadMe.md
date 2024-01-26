@@ -78,7 +78,9 @@ Then you are ready:
 
 ## Tailwind UI ##
 
-![Alt text](image-2.png)
+![Alt text](firefox_ymxrmY4C12.png)
+
+![Alt text](firefox_VUflT1j9dD.png)
 
 ![Alt text](image-1.png)
 
