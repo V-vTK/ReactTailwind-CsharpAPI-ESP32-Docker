@@ -3,12 +3,16 @@ import React, { useState, useEffect } from "react";
 import { usePocket } from "../contexts/PocketContext";
 import { TopNav } from "../components/TopNav";
 import AverageStat from "../components/AverageStat";
+import StatCards from "../components/StatCards";
+import StatCharts from "../components/StatCharts";
+import { SwitchWithDescription } from "../components/SwitchWithDescription";
 
 
 export const Protected = () => {
   const { logout, pb } = usePocket();
   const [data, setData] = useState(null);
-  
+  const [switchState, setSwitchState] = useState(false);
+
   const getDailyData = async () => {
     try {
       const { formattedToday, formattedTomorrow } = getDate(-3);
@@ -66,6 +70,10 @@ export const Protected = () => {
     } 
   }
 
+  const handleSwitchChange = () => {
+    setSwitchState(!switchState);
+  };
+
   // Initial render
   useEffect(() => { 
     getDailyData();
@@ -84,38 +92,12 @@ export const Protected = () => {
           <div>Average Temperature: <AverageStat data={data} stat={"temperature"} sign={"°C"}></AverageStat></div>
         </pre>
       </div>
-      <div className="flex flex-row justify-center">
-        <pre className="border border-gray-300 rounded-md p-6 m-4 flex flex-wrap w-1/4 min-w-min">
-          {data && data.length > 0 ? (
-            data
-              .slice()
-              .sort((a, b) => new Date(b.time) - new Date(a.time))
-              .map(item => (
-                <div key={item.id} className="border border-gray-300 rounded-md p-2 m-2 flex-grow min-w-min">
-                  <p>Date: {item.time}</p>
-                  <p>Humidity: {item.humidity} %</p>
-                </div>
-              ))
-            ) : (
-            <p>No data available.</p>
-          )}
-        </pre>
-        <pre className="border border-gray-300 rounded-md p-6 m-4 flex flex-wrap w-1/4 min-w-min">
-          {data && data.length > 0 ? (
-            data
-              .slice() 
-              .sort((a, b) => new Date(b.time) - new Date(a.time)) 
-              .map(item => (
-                <div key={item.id} className="border border-gray-300 rounded-md p-2 m-2 flex-grow min-w-min">
-                  <p>Date: {item.time}</p>
-                  <p>Temperature: {item.temperature} °C</p>
-                </div>
-              ))
-            ) : (
-            <p>No data available.</p>
-          )}
-        </pre>
-      </div>
+      <SwitchWithDescription text={switchState} desc={"Switch between Graph and Card layout"} onChange={handleSwitchChange}></SwitchWithDescription>
+      {switchState ? (
+        <StatCards data={data}></StatCards>
+      ) : (
+        <StatCharts data={data}></StatCharts>
+      )}
       <p>Your password is never stored in plaintext inside the database.</p>
       <button onClick={logout} className="text-md font-bold m-4 bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Logout</button>
     </section>
